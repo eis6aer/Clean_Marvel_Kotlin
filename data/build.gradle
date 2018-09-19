@@ -54,7 +54,8 @@ dependencies {
             generalTestDependencies.kotlinTest
 
     compile dataDependencies.retrofit,
-            dataDependencies.retrofitConverter
+            dataDependencies.retrofitConverter,
+            dataDependencies.loggingInterceptor
 
 }
 

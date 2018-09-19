@@ -17,6 +17,7 @@ ext {
     //data dependencies version
     retrofitVersion = '2.4.0'
     retrofitConverterGsonVersion = '2.4.0'
+    loggingInterceptorVersion = '3.9.1'
 
     //test dependencies
     mockitoVersion = '2.10.0'
@@ -50,6 +51,7 @@ ext {
     dataDependencies = [
             retrofit            : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             retrofitConverter   : "com.squareup.retrofit2:converter-gson:${retrofitConverterGsonVersion}",
+            loggingInterceptor  : "com.squareup.okhttp3:logging-interceptor:${loggingInterceptorVersion}"
 
     ]
 
