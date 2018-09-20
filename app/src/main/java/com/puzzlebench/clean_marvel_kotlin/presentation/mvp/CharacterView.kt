@@ -3,6 +3,7 @@ package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.puzzlebench.clean_marvel_kotlin.R
+import com.puzzlebench.clean_marvel_kotlin.presentation.DetailsFragment
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.clean_marvel_kotlin.presentation.MainActivity
 import com.puzzlebench.clean_marvel_kotlin.presentation.adapter.CharacterAdapter
@@ -13,7 +14,10 @@ import java.lang.ref.WeakReference
 class CharacterView(activity: MainActivity) {
     private val activityRef = WeakReference(activity)
     private val SPAN_COUNT = 1
-    var adapter = CharacterAdapter { character -> activity.applicationContext.showToast(character.name) }
+    var adapter = CharacterAdapter { character ->
+        //activity.applicationContext.showToast(character.name)
+        showDetails(character.id)
+    }
 
     fun init() {
         val activity = activityRef.get()
@@ -49,5 +53,10 @@ class CharacterView(activity: MainActivity) {
     fun showLoading() {
         activityRef.get()!!.progressBar.visibility = View.VISIBLE
 
+    }
+
+    fun showDetails(characterId: Int)
+    {
+        DetailsFragment.newInstance(characterId).show(activityRef.get()!!.supportFragmentManager,"DetailsFragment")
     }
 }

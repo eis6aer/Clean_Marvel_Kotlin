@@ -10,4 +10,7 @@ import java.util.*
 interface MarvelApi {
     @GET("/v1/public/characters")
     fun getCharacter(): Call<MarvelBaseResponse<DataBaseResponse<ArrayList<CharacterResponse>>>>
+
+    @GET("/v1/public/characters/{characterId}")
+    fun getCharacterDetails(): Call<MarvelBaseResponse<DataBaseResponse<ArrayList<CharacterResponse>>>>
 }
