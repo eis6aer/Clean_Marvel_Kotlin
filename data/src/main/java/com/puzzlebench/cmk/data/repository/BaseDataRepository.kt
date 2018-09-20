@@ -15,4 +15,7 @@ abstract class BaseDataRepository<T, D : RealmObject>(private val dataSource: Da
     }
 
     fun getAll(): List<T> = dataSource.getAll()?.map { mapper.transform(it) } ?: listOf()
+
+    fun getById(characterId : Int): T = mapper.transform(dataSource!!.getById(characterId))
+
 }

@@ -10,6 +10,17 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.puzzlebench.clean_marvel_kotlin.R
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterPresenter
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterView
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.details.CharacterDetailsPresenter
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.details.CharacterDetailsView
+import com.puzzlebench.cmk.data.mapper.repository.CharacterMapperRepository
+import com.puzzlebench.cmk.data.repository.CharacterDataRepository
+import com.puzzlebench.cmk.data.repository.source.CharacterDataSource
+import com.puzzlebench.cmk.data.service.CharacterServicesImpl
+import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
+import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_details.*
 
 private const val ARGUMENT_CHARACTER_ID = "character_id"
@@ -23,12 +34,21 @@ private const val ARGUMENT_CHARACTER_ID = "character_id"
 class DetailsFragment : DialogFragment() {
 
     private var characterId: Int? = null
+    protected var subscriptions = CompositeDisposable()
+
+
+    val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
+    val getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSource(), CharacterMapperRepository()))
+
+    var presenter : CharacterDetailsPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             characterId = it.getInt(ARGUMENT_CHARACTER_ID,0)
+
         }
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +63,9 @@ class DetailsFragment : DialogFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTitleText(characterId.toString())
+        //setTitleText(characterId.toString())
+        presenter = CharacterDetailsPresenter(CharacterDetailsView(this@DetailsFragment), getCharacterServiceUseCase, getCharacterRepositoryUseCase, subscriptions, characterId!!)
+        presenter?.init()
     }
 
     fun setTitleText(text: String)

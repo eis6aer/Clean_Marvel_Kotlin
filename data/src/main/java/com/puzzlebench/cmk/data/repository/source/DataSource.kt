@@ -29,4 +29,13 @@ abstract class DataSource<T : RealmObject>(private val clazz: Class<T>) {
         })
         return results
     }
+
+    fun getById(characterId: Int, realm: Realm = Realm.getDefaultInstance()) : T
+    {
+        var results: T? = null
+        realm.executeTransaction({
+            results = it.where(clazz).equalTo("id",characterId).findFirst()
+        })
+        return results!!
+    }
 }

@@ -8,5 +8,6 @@ class GetCharacterRepositoryUseCase(private val characterDataRepository: Charact
 
     operator fun invoke(): List<Character> = characterDataRepository.getAll()
     operator fun invoke(characters: List<Character>) = characterDataRepository.save(characters)
+    operator fun invoke(characterId: Int) = characterDataRepository.getById(characterId)
 
 }

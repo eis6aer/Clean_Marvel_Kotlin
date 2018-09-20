@@ -22,6 +22,12 @@ class CharacterPresenter(view: CharacterView,
             view.hideLoading()
             view.showCharacters(characters)
         }
+
+        view.onUpdate {
+            view.showLoading()
+            requestGetCharacters()
+            view.showToastNetworkError("Data updated!")
+        }
     }
 
     private fun requestGetCharacters() {

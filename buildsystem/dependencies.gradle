@@ -29,7 +29,8 @@ ext {
             rxAndroid           : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
             rxJava              : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
             appSupport          : "com.android.support:appcompat-v7:${appSupportVersion}",
-            kotlin              : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
+            kotlin              : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}",
+            design              : "com.android.support:design:${appSupportVersion}"
 
 
     ]
