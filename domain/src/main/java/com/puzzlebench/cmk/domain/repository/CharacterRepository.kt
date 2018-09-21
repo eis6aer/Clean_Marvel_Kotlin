@@ -7,5 +7,7 @@ interface CharacterRepository {
 
     fun save(c: List<Character>)
 
+    fun save(c: Character)
+
     fun getById(characterId : Int) : Character
 }
