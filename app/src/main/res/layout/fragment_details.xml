@@ -30,9 +30,8 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="16dp"
+        style="@style/TextView.Header"
         android:gravity="center"
-        android:textColor="@color/colorWhite"
-        android:textSize="32dp"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="CHARACTER ID" />
