@@ -9,9 +9,10 @@
     <ImageView
         android:id="@+id/image_hero"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/image_hero_ph"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -22,6 +23,20 @@
         android:layout_height="@dimen/super_hero_row_gradient_height"
         android:background="@drawable/super_hero_gradient"
         app:layout_constraintBottom_toBottomOf="@id/image_hero" />
+
+    <TextView
+        android:id="@+id/text_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_title"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="HERO ID" />
 
     <TextView
         android:id="@+id/text_title"
