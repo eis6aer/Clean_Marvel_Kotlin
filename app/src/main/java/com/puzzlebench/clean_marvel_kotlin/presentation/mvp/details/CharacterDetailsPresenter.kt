@@ -18,8 +18,7 @@ class CharacterDetailsPresenter(view: CharacterDetailsView,
 {
     var character: Character? by Delegates.observable<Character?>(null) { property, oldVal, newVal ->
         newVal?.let {
-            view.updateTitle(it.name)
-            view.updateImage(it.thumbnail)
+            view.updateCharacter(it)
             Log.v(this@CharacterDetailsPresenter::class.java.simpleName,"delegate: data updated")
         }
     }
