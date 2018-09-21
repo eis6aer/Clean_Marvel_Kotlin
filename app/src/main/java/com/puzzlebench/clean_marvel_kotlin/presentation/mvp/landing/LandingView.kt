@@ -1,9 +1,7 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp.landing
 
 import android.content.Intent
-import android.view.animation.Animation
-import android.view.animation.DecelerateInterpolator
-import android.view.animation.RotateAnimation
+import android.view.animation.*
 import com.puzzlebench.clean_marvel_kotlin.presentation.LandingActivity
 import com.puzzlebench.clean_marvel_kotlin.presentation.MainActivity
 import kotlinx.android.synthetic.main.activity_landing.*
@@ -16,6 +14,8 @@ class LandingView(activity: LandingActivity)
 
     fun rotateImage()
     {
+        var animationSet = AnimationSet(false)
+
         val rotate = RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
         rotate.duration = 1000
         rotate.interpolator = DecelerateInterpolator()
@@ -34,7 +34,14 @@ class LandingView(activity: LandingActivity)
 
         })
 
-        activityRef.get()!!.image_main_logo.startAnimation(rotate)
+        var alphaAnimation = AlphaAnimation(0F,1F)
+        alphaAnimation.duration = 900
+        alphaAnimation.fillAfter = true
+
+        animationSet.addAnimation(rotate)
+        animationSet.addAnimation(alphaAnimation)
+
+        activityRef.get()!!.image_main_logo.startAnimation(animationSet)
     }
 
     fun goMainActivity()
