@@ -15,6 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
 
@@ -38,7 +39,8 @@ dependencies {
     implementation generalDependencies.rxAndroid,
             generalDependencies.rxJava,
             generalDependencies.appSupport,
-            generalDependencies.kotlin
+            generalDependencies.kotlin,
+            generalDependencies.design
 
 
     implementation appDependencies.picasso,

@@ -5,4 +5,5 @@ import io.reactivex.Observable
 
 interface CharacterServices {
     fun getCharacters(): Observable<List<Character>>
+    fun getCharacterData(characterId: Int): Observable<Character>
 }
