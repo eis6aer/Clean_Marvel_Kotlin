@@ -47,6 +47,7 @@ dependencies {
             appDependencies.recyclerView,
             appDependencies.constraintLayout
 
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation generalTestDependencies.mockito,
             generalTestDependencies.junit,
             generalTestDependencies.kotlinTest
